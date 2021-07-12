@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+    <html>
+        <head>
+        {% block head_block %}
+            <link href="//fonts.googleapis.com/css?family=Roboto&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+            <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+            <link rel="stylesheet" href="{% static 'css/mainapp.css' %}">
+            <title>{% block title %}Znajdź pracę lub pracownika !{% endblock %}</title>
+        {% endblock head_block %}
+        </head>
+        <body>
+            <div class = "page-header">
+                <h1><a href="/">Portal pracy</a></h1>
+            </div>
+
+            <div class = "tekst_powitalny">
+                {% block body_content %}</p>Witaj, na tej stronie znajdziesz pracę lub pracownika</p>
+            </div>
+            <div class = "Hyper Linki">
+                <a href="{% url 'dodaj_ogloszenie' %}" class="top-menu"><button type="add" class="add btn btn-default">Dodaj ogłoszenie</button>
+                <a href="{% url 'przegladaj' %}" class="top-menu"><button type="add" class="add btn btn-default">Przedglądaj ogłoszenia</button>
+                <a href="{% url 'pracodawcy' %}" class="top-menu"><button type="add" class="add btn btn-default">Przegaldaj pracodawców</button>
+                {% endblock %}
+            </div>
+
+        </body>
+    </html>

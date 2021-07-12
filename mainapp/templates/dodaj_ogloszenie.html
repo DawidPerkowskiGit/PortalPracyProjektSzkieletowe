@@ -1,0 +1,11 @@
+{% extends 'home.html' %}
+
+{% block body_content %}
+    <div class = "bodyOgloszenie" >
+        <h2>Zamieść ogłoszenie</h2>
+        <form method="POST" class="dodaj-ogloszenie">{% csrf_token %}
+            {{ dodaj_ogloszenie.as_p }}
+            <button type="submit" class="save btn btn-default">Save</button>
+        </form>
+    </div>
+{% endblock %}

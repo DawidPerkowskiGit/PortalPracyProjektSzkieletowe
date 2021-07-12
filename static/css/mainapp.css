@@ -1,0 +1,66 @@
+.page-header {
+    background-color: #111680;
+    margin-top: 0;
+    padding: 20px 20px 40px 100px;
+}
+
+.page-header h1, .page-header h1 a, .page-header h1 a:visited, .page-header h1 a:active {
+    color: #ffffff;
+    font-size: 48pt;
+    text-decoration: none;
+}
+
+h1 a, h2 a {
+    color: #252CA7;
+}
+
+body {
+    font-family: 'Roboto';
+}
+
+.ogloszenieSeparator {
+    font-size: 12pt;
+    background-color: #15174A;
+    margin-top: 0;
+    padding: 5px 5px 5px 5px;
+}
+
+.wymaganieSeparator {
+    font-size: 12pt;
+    background-color: #155A3F;
+    margin-top: 0;
+    padding: 5px 5px 5px 5px;
+}
+
+.bodyOgloszenie {
+    padding-left: 45px;
+    font-size: 16pt;
+}
+
+
+.bodyWymaganie {
+    padding-left: 65px;
+    font-size: 14pt;
+}
+
+.tekst_powitalny {
+
+    font-size: 26pt;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

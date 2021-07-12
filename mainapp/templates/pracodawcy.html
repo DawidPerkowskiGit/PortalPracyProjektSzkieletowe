@@ -1,0 +1,15 @@
+{% extends "home.html" %}
+
+{% block title %}Przeglądaj profile pracodawcow{% endblock %}
+{% block body_content %}
+
+    <div>
+        {% for przedsiebiorstwo in listaPrzedsiebiorstw %}
+                <div class = "plus">
+                    <h2><a href="{% url 'pracodawcy' %}">{{ przedsiebiorstwo.nazwa }}</a></h2>
+                </div>
+            <p>Adres: {{ przedsiebiorstwo.adres }}</p>
+            <p>{{ przedsiebiorstwo.opis }}</p>
+        {% endfor %}
+    </div>
+    {% endblock %}

@@ -1,0 +1,66 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+
+{% block title %}Przeglądaj szczegóły ogloszenia{% endblock title %}
+{% block body_content %}
+
+        <div class = "plus">
+            <a href="{% url 'odpowiedz_ogloszenie' pk=szczegoly_ogloszenia.pk %}" class="top-menu"><button type="add" class="add btn btn-default">Napisz odpowiedź</button></a>
+        </div>
+
+        <div class="ogloszenieSeparator">
+            <img src="/static/images/Ogloszenie.png">
+        </div>
+        <div class = "bodyOgloszenie" >
+            <h2><a href="">{{ szczegoly_ogloszenia.nazwa }}</a></h2>
+            <p>Przedsiębiorstwo: {{ szczegoly_ogloszenia.przedsiebiorstwo.nazwa }}</p>
+            <p>Stanowisko:{{ szczegoly_ogloszenia.stanowisko }}</p>
+            <p>Wymagane doświadczenie = {{ szczegoly_ogloszenia.staz }}</p>
+            <p>Branża : {{ szczegoly_ogloszenia.branza }}</p>
+            <p>Zawód : {{ szczegoly_ogloszenia.zawod }}</p>
+            <p>Oferta aktualna do : {{ szczegoly_ogloszenia.do_kiedy_aktualna }}</p>
+
+            {% if ogloszenie.praca_zdalna %}
+                <p>Praca zdalna : Tak</p>
+            {% else %}
+                <p>Praca zdalna : Nie</p>
+            {% endif %}
+
+
+        <div class="ogloszenieSeparator">
+            <img src="/static/images/Wymagania.png">
+        </div>
+
+        {% for wymaganie in listaWymagan %}
+            {% if wymaganie.ogloszenie.id == szczegoly_ogloszenia.id %}
+                <div class="wymaganieSeparator">
+                    <p>   </p>
+                </div>
+                <div class = "bodyWymaganie" >
+                    <p>{{ wymaganie.nazwa }}</p>
+                    <p> {{ wymaganie.opis_wymagania }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+
+        <div class="ogloszenieSeparator">
+            <img src="/static/images/Odpowiedzi.png">
+        </div>
+        {% for odpowiedz in listaOdpowiedzi %}
+
+                <div class="ogloszenieSeparator">
+                    <p>   </p>
+                </div>
+                <div class = "bodyOgloszenie" >
+                    <p>Ogloszenie : {{ odpowiedz.ogloszenie.nazwa }}</p>
+                    <p>Odpowiada : {{ odpowiedz.uzytkownik.imie }} {{ odpowiedz.uzytkownik.nazwisko }}</p>
+                    <p>Tytuł Odpowiedzi : {{ odpowiedz.tytul }}</p>
+                </div>
+
+        {% endfor %}
+
+    {% endblock body_content %}
+
