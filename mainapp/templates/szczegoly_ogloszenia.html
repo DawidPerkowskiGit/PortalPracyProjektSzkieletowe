@@ -49,16 +49,19 @@
         <div class="ogloszenieSeparator">
             <img src="/static/images/Odpowiedzi.png">
         </div>
+        <div class="ogloszenieSeparator">
+            <p>   </p>
+        </div>
         {% for odpowiedz in listaOdpowiedzi %}
 
-                <div class="ogloszenieSeparator">
-                    <p>   </p>
-                </div>
-                <div class = "bodyOgloszenie" >
-                    <p>Ogloszenie : {{ odpowiedz.ogloszenie.nazwa }}</p>
-                    <p>Odpowiada : {{ odpowiedz.uzytkownik.imie }} {{ odpowiedz.uzytkownik.nazwisko }}</p>
-                    <p>Tytuł Odpowiedzi : {{ odpowiedz.tytul }}</p>
-                </div>
+
+                {% if szczegoly_ogloszenia.nazwa == odpowiedz.ogloszenie.nazwa %}
+                    <div class = "bodyOgloszenie" >
+                        <p>Ogloszenie : {{ odpowiedz.ogloszenie.nazwa }}</p>
+                        <p>Odpowiada : {{ odpowiedz.uzytkownik.imie }} {{ odpowiedz.uzytkownik.nazwisko }}</p>
+                        <p>Tytuł Odpowiedzi : {{ odpowiedz.tytul }}</p>
+                    </div>
+                {% endif %}
 
         {% endfor %}
 

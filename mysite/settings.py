@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['DawidPerkowski.pythonanywhere.com',
                  '127.0.0.1',
-]
+                 ]
 
 
 # Application definition
@@ -129,5 +129,6 @@ MEDIA_URL = '/media/'
 STATIC_ROOT = '/home/DawidPerkowski/mysite/static'
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]
