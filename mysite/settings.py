@@ -126,7 +126,7 @@ STATIC_URL = '/static/'
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
 MEDIA_ROOT = '/home/DawidPerkowski/mysite/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/DawidPerkowski/mysite/static'
+#STATIC_ROOT = '/home/DawidPerkowski/mysite/static'
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
