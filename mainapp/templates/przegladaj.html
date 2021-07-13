@@ -1,0 +1,50 @@
+{% extends "home.html" %}
+
+{% load static %}
+
+
+
+{% block title %}Przeglądaj ogloszenia{% endblock title %}
+{% block body_content %}
+
+<div class = "plus">
+    <a href="{% url 'dodaj_ogloszenie' %}" class="top-menu"><button type="add" class="add btn btn-default">Dodaj ogłoszenie</button></a>
+</div>
+
+    {% for ogloszenie in listaOgloszen %}
+        <div class="ogloszenieSeparator">
+            <p>  </p>
+        </div>
+        <div class = "bodyOgloszenie" >
+<!--            <h2><a href="">{{ ogloszenie.nazwa }}</a></h2> -->
+            <h2><a href="{% url 'szczegoly_ogloszenia' pk=ogloszenie.pk %}">{{ ogloszenie.nazwa }}</a></h2>
+            <p>Przedsiębiorstwo: {{ ogloszenie.przedsiebiorstwo.nazwa }}</p>
+            <p>Stanowisko:{{ ogloszenie.stanowisko }}</p>
+            <p>Wymagane doswiadczenie = {{ ogloszenie.staz }}</p>
+            <p>Branża : {{ ogloszenie.branza }}</p>
+            <p>Zawód : {{ ogloszenie.zawod }}</p>
+            <p>Oferta aktualna do : {{ ogloszenie.do_kiedy_aktualna }}</p>
+
+            {% if ogloszenie.praca_zdalna %}
+                <p>Praca zdalna : Tak</p>
+            {% else %}
+                <p>Praca zdalna : Nie</p>
+            {% endif %}
+        </div>
+
+        {% for wymaganie in listaWymagan %}
+            {% if wymaganie.ogloszenie.id == ogloszenie.id %}
+                <div class="wymaganieSeparator">
+                    <p>   </p>
+                </div>
+                <div class = "bodyWymaganie" >
+                    <p>Wymagamy :  {{ wymaganie.nazwa }}</p>
+                    <p> {{ wymaganie.opis_wymagania }}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+
+
+    {% endblock body_content %}
+
