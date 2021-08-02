@@ -25,7 +25,9 @@ SECRET_KEY = '@-8cuv4p%difdun60i6ke7)*$6b%s_$+211dsqyz42$_5*ytxm'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['DawidPerkowski.pythonanywhere.com']
+ALLOWED_HOSTS = ['DawidPerkowski.pythonanywhere.com',
+                 '127.0.0.1',
+                 ]
 
 
 # Application definition
@@ -124,6 +126,9 @@ STATIC_URL = '/static/'
 # see https://help.pythonanywhere.com/pages/DjangoStaticFiles for more info
 MEDIA_ROOT = '/home/DawidPerkowski/mysite/media'
 MEDIA_URL = '/media/'
-STATIC_ROOT = '/home/DawidPerkowski/mysite/static'
+#STATIC_ROOT = '/home/DawidPerkowski/mysite/static'
 STATIC_URL = '/static/'
 
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static"),
+]

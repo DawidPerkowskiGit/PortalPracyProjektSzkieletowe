@@ -15,16 +15,17 @@
             <div class = "page-header">
                 <h1><a href="/">Portal pracy</a></h1>
             </div>
+            {% block body_content %}
 
             <div class = "tekst_powitalny">
-                {% block body_content %}</p>Witaj, na tej stronie znajdziesz pracę lub pracownika</p>
+                <p>Witaj, na tej stronie znajdziesz pracę lub pracownika pycharm?</p>
             </div>
             <div class = "Hyper Linki">
-                <a href="{% url 'dodaj_ogloszenie' %}" class="top-menu"><button type="add" class="add btn btn-default">Dodaj ogłoszenie</button>
-                <a href="{% url 'przegladaj' %}" class="top-menu"><button type="add" class="add btn btn-default">Przedglądaj ogłoszenia</button>
-                <a href="{% url 'pracodawcy' %}" class="top-menu"><button type="add" class="add btn btn-default">Przegaldaj pracodawców</button>
-                {% endblock %}
-            </div>
+                <a href="{% url 'dodaj_ogloszenie' %}" class="top-menu"><button type="add" class="add btn btn-default">Dodaj ogłoszenie</button></a>
+                <a href="{% url 'przegladaj' %}" class="top-menu"><button type="add" class="add btn btn-default">Przedglądaj ogłoszenia</button></a>
+                <a href="{% url 'pracodawcy' %}" class="top-menu"><button type="add" class="add btn btn-default">Przegaldaj pracodawców</button></a>
 
+            </div>
+            {% endblock %}
         </body>
     </html>

@@ -8,62 +8,115 @@
 {% block body_content %}
 
         <div class = "plus">
-            <a href="{% url 'odpowiedz_ogloszenie' pk=szczegoly_ogloszenia.pk %}" class="top-menu"><button type="add" class="add btn btn-default">Napisz odpowiedź</button></a>
+            <a href="{% url 'odpowiedz_ogloszenie' pk=szczegoly_ogloszenia.pk %}" class="top-menu"><button class="add btn btn-default">Napisz odpowiedź</button></a>
         </div>
 
         <div class="ogloszenieSeparator">
             <img src="/static/images/Ogloszenie.png">
         </div>
         <div class = "bodyOgloszenie" >
-            <h2><a href="">{{ szczegoly_ogloszenia.nazwa }}</a></h2>
-            <p>Przedsiębiorstwo: {{ szczegoly_ogloszenia.przedsiebiorstwo.nazwa }}</p>
-            <p>Stanowisko:{{ szczegoly_ogloszenia.stanowisko }}</p>
-            <p>Wymagane doświadczenie = {{ szczegoly_ogloszenia.staz }}</p>
-            <p>Branża : {{ szczegoly_ogloszenia.branza }}</p>
-            <p>Zawód : {{ szczegoly_ogloszenia.zawod }}</p>
-            <p>Oferta aktualna do : {{ szczegoly_ogloszenia.do_kiedy_aktualna }}</p>
+        <style>
+            table{
+                width: 100%;
+            }
+            table, th, td {
+              border: 1px solid black;
+              border-collapse: collapse;
+            }
+            th, td {
+              padding: 15px;
+              text-align: left;
+            }
+        </style>
 
-            {% if ogloszenie.praca_zdalna %}
-                <p>Praca zdalna : Tak</p>
-            {% else %}
-                <p>Praca zdalna : Nie</p>
-            {% endif %}
+            <table>
+            <tr>
+                <td><h2><a href="">{{ szczegoly_ogloszenia.nazwa }}</a></h2></td>
+            </tr>
+            <tr>
+                <td>Przedsiębiorstwo: {{ szczegoly_ogloszenia.przedsiebiorstwo.nazwa }}</td>
+            </tr>
+            <tr>
+                <td>Stanowisko:{{ szczegoly_ogloszenia.stanowisko }}</td>
+            </tr>
+            <tr>
+                 <td>Wymagane doświadczenie = {{ szczegoly_ogloszenia.staz }}</td>
+            </tr>
+            <tr>
+                <td>Branża : {{ szczegoly_ogloszenia.branza }}</td>
+            </tr>
+            <tr>
+                <td>Zawód : {{ szczegoly_ogloszenia.zawod }}</td>
+            </tr>
+            <tr>
+                <td>Oferta aktualna do : {{ szczegoly_ogloszenia.do_kiedy_aktualna }}</td>
+            </tr>
+
+
+                {% if ogloszenie.praca_zdalna %}
+                    <th><p>Praca zdalna : Tak</p></th>
+                {% else %}
+                   <th> <p>Praca zdalna : Nie</p></th>
+                {% endif %}
+
+        </table>
+        </div>
+
 
 
         <div class="ogloszenieSeparator">
             <img src="/static/images/Wymagania.png">
         </div>
 
+        <table>
+
+
+        <tr>
+            <th>Wymaganie</th>
+            <th>Opis</th>
+        </tr>
         {% for wymaganie in listaWymagan %}
             {% if wymaganie.ogloszenie.id == szczegoly_ogloszenia.id %}
                 <div class="wymaganieSeparator">
                     <p>   </p>
                 </div>
-                <div class = "bodyWymaganie" >
-                    <p>{{ wymaganie.nazwa }}</p>
-                    <p> {{ wymaganie.opis_wymagania }}</p>
-                </div>
+                <tr>
+                    <div class = "bodyWymaganie" >
+                        <td><p>{{ wymaganie.nazwa }}</p></td>
+                        <td><p> {{ wymaganie.opis_wymagania }}</p></td>
+                    </div>
+                </tr>
+
             {% endif %}
         {% endfor %}
-
+        </table>
         <div class="ogloszenieSeparator">
             <img src="/static/images/Odpowiedzi.png">
         </div>
         <div class="ogloszenieSeparator">
             <p>   </p>
         </div>
+
+
+        <table style="width:100%">
+            <tr>
+                <th><p>Ogloszenie</p></th>
+                <th><p>Odpowiada</p></th>
+                <th><p>Tytuł Odpowiedzi</p></th>
+            </tr>
         {% for odpowiedz in listaOdpowiedzi %}
 
-
                 {% if szczegoly_ogloszenia.nazwa == odpowiedz.ogloszenie.nazwa %}
+                    <tr>
                     <div class = "bodyOgloszenie" >
-                        <p>Ogloszenie : {{ odpowiedz.ogloszenie.nazwa }}</p>
-                        <p>Odpowiada : {{ odpowiedz.uzytkownik.imie }} {{ odpowiedz.uzytkownik.nazwisko }}</p>
-                        <p>Tytuł Odpowiedzi : {{ odpowiedz.tytul }}</p>
+                        <td>{{ odpowiedz.ogloszenie.nazwa }}</td>
+                        <td>{{ odpowiedz.uzytkownik.imie }} {{ odpowiedz.uzytkownik.nazwisko }}</td>
+                        <td>{{ odpowiedz.tytul }}</td>
                     </div>
+                    </tr>
                 {% endif %}
 
         {% endfor %}
-
+        </table>
     {% endblock body_content %}
 
